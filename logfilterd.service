@@ -1,0 +1,13 @@
+[Unit]
+Description=Logfilterd
+Wants=logfilterd-runserver.service logfilterd-clear.service
+
+[Service]
+Type=simple
+User=root
+Restart=always
+RestartSec=15
+ExecStart=/usr/bin/python3.8 /etc/logfilterd/logfilterd.py
+
+[Install]
+WantedBy=multi-user.target

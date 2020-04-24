@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans">
+    <title>Logfilter</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header__inner">
+                <div class="header__inner-title">
+                    <a href="/">
+                        <div class="header__inner-img"><img src="{% static 'img/logo.png' %}" alt=""></div>
+                    </a>
+                    <div class="menu__btn"><span></span></div>
+                    <div class="menu__mobile">
+                        <ul>
+                            <a href="/">
+                                <li>Monitoring</li>
+                            </a>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'logout'%}?next={{request.path}}">
+                                    <li>Logout <span>{{ user.get_username }}</span></li>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'login'%}?next={{request.path}}">
+                                    <li>Login</li>
+                                </a>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <a class="header__inner-ref" href="/">
+                        <div class="header__inner-text">Logfilter</div>
+                    </a>
+                </div>
+                <div class="header__inner-user">
+                    {% if user.is_authenticated %}
+                        <div class="header__inner-username">{{ user.get_username }}</div>
+                        <a href="{% url 'logout'%}">
+                            <div class="login__item">Logout</div>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'login'%}">
+                            <div class="login__item">Login</div>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+        <div class="menu">
+            <div class="menu__images">
+                <div class="menu__img"><a href="/">
+                    <img src="{% static 'img/menu_monitoring.png' %}" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div>
+            {% block logs %}{% endblock %}
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script id="update_logs" last_id="{{ last_id }}" src="{% static 'update_logs.js' %}"></script>
+    <script id="slide" src="{% static 'slide.js' %}"></script>  
+</body>
+</html>

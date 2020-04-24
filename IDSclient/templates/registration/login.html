@@ -1,0 +1,19 @@
+{% extends "IDS/base.html" %}
+{% load static %}
+{% block content %}
+
+<form class ="form" method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <img class="form__img" src="{% static 'img/login.png' %}" alt="" class="form__img">
+    <img class="username__img" src="{% static 'img/user.png' %}"  alt=""></img>
+    <img class="password__img" src="{% static 'img/pwd.png' %}"  alt=""></img>
+    <input id="id_username" name="username" type="text" class="form-control" placeholder="Username">
+    <input id="id_password" name="password" type="password" class="form-control" placeholder="Password">
+    <input class = "button" type="submit" value="login" />
+    {% if form.errors %}
+        <p class="form__error">Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'IDS/base.html' %}
+{% load static %} 
+
+{% block logs %}
+    <div class="content">
+        <div class="content__inner">
+            <div class="graph">
+                <canvas id="log_chart"></canvas>
+            </div>
+            <div class="logs_block">
+                <table>
+                    {% for log in log_list %}
+                         <tr>
+                             <th class="log_id">{{ log.id }}</th>
+                             <th class="log_text">{{ log.message }}</th>
+                             <th class="log_time">{{ log.timestamp|date:'H:i' }}
+                                <span class="tooltiptext">{{ log.timestamp|date:'Y-m-d H:i:s' }}</span>
+                             </th>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>   
+{% endblock %}

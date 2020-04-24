@@ -1,0 +1,3 @@
+(\%3D)|(=)[^\n]*(\%27)|(\')|(\-\-)|(\%3B)|union|select|update|delete|drop, 3
+(whoami|ifconfig|netstat), 3
+((\%3c)|<)[^\n]+((\%3e)|>), 3
