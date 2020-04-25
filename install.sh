@@ -30,4 +30,4 @@ sudo systemctl start logfilterd.service
 sudo systemctl start logfilterd-clear.service
 sudo systemctl start logfilterd-runserver.service
 
-python3.8 /etc/logfilterd/IDSclient/manage.py migrate
+python3.8 /etc/logfilterd/IDSclient/manage.py createsuperuser
