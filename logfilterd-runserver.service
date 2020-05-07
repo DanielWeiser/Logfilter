@@ -7,7 +7,7 @@ Type=simple
 User=root
 Restart=always
 RestartSec=15
-ExecStart=/usr/bin/python3.8 /etc/logfilterd/logfilterd-runserver.py
+ExecStart=/usr/bin/python3 /etc/logfilterd/logfilterd-runserver.py
 
 [Install]
 WantedBy=multi-user.target

@@ -4,7 +4,21 @@ Intrusion detection system Logfilter provides flexible configuration and the add
 
 ### Prerequisites
 
-First, you must have installed MySQL and a database created, in which data about user accounts and logs will be stored. Then specify the database information in the configuration file config.py
+First, you must have installed MySQL and a database created, in which data about user accounts and logs will be stored. Then specify the database information in the configuration file config.py and install packages.
+
+```sh
+sudo apt install -y python3.8
+sudo apt install -y python3-pip
+sudo -H pip3 install Django==2.2.10
+sudo apt install -y python3.8-dev libmysqlclient-dev
+sudo -H pip3 install mysqlclient
+```
+
+A simple safe way would be to use an alias. Place this into ~/.bashrc or ~/.bash_aliases file:
+```sh
+alias python3=python3.8
+```
+After adding the above in the file, run source ~/.bashrc or source ~/.bash_aliases
 
 ### Installation
 
