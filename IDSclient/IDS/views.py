@@ -6,6 +6,9 @@ from django.forms.models import model_to_dict
 from django.contrib.auth.decorators import login_required
 import datetime
 
+'''
+return list of logs in IDS/logs.html
+'''
 @login_required
 def index(request):
     log_list = list(Log.objects.all())
@@ -16,6 +19,9 @@ def index(request):
         
     return render(request, 'IDS/logs.html', context)
 
+'''
+return json of last minute logs and danger lvl
+'''
 def upd_logs(request):
     last_log_id = request.GET.get('last_log_id', None)
 
@@ -30,5 +36,4 @@ def upd_logs(request):
     for log in last_logs:
         danger_sum += log.danger
     
-
     return JsonResponse([log_list_to_resp, danger_sum, str(current_time.time())[0:8]], safe = False)

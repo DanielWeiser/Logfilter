@@ -14,6 +14,7 @@ function formated_date(time, type) {
         return `${hour}:${minute}`
 }
 
+//call upd_logs from views.py and update log list and graph
 function get_next(len_log_list) {
     $.ajax({
         type: 'get',
@@ -64,6 +65,8 @@ function get_next(len_log_list) {
 }
 
 var ctx = document.getElementById('log_chart').getContext('2d'),
+
+//graph
 chart = new Chart(ctx, {
     type: 'line',
 
